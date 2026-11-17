@@ -24,8 +24,38 @@ This is a queuing model in which the arrival is Marcovian and departure distribu
  
 ## Program
 ![image](https://github.com/ramjan1729/Single-server-infinite-capacity---Markov-Model/assets/103921593/5f1fd58d-5929-4c51-89ea-4cef009e5bad)
+```
+arr_time = float(input("Enter the mean inter arrival time of objects from feeder (in secs) : "))
+ser_time = float(input("Enter the mean inter service time of the Lathe Machine (in secs) : "))
+Robot_time = float(input("Enter the time taken by the Robot (in secs) : "))
 
+lam = 1 / arr_time
+mu = 1 / (ser_time+Robot_time)
+print("---------------------------------------------------")
+print("Single server with infinite capacity - (M/M/1):(00/FIFO)")
+print("---------------------------------------------------")
+print("The mean arrival rate per second : %0.2f "%lam)
+print("The mean service rate per second : %0.2f "%mu)
+
+
+if lam < mu:
+    Ls = lam / (mu - lam)
+    Lq = Ls - (lam / mu)
+    Ws = Ls / lam
+    Wq = Lq / lam
+    print("Average number of objects in the system : %0.2f " %Ls)
+    print("Average number of objects in the conveyor :  %0.2f " %Lq)
+    print("Average waiting time of an object in the system : %0.2f secs" % Ws)
+    print("Average waiting time of an object in the conveyor : %0.2f secs" % Wq)
+    print("Probability that the system is busy : %0.2f " % (lam / mu))
+    print("Probability that the system is empty : %0.2f " % (1 - lam / mu))
+else:
+    print("Warning! Objects Over flow will happen in the conveyor")
+print("--------------------------------------------------------")
+
+```
 ## Output :
+<img width="758" height="330" alt="image" src="https://github.com/user-attachments/assets/539ad5d5-e24a-4e05-bed4-9bf61ad75954" />
 
 ## Result :
-
+Single server with infinite capacity is analysed
